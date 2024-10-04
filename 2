@@ -1,0 +1,28 @@
+//Напишите рекурсивную функцию, которая копирует символы из одной 
+//-style строки в другую. Используйте ее в main.
+
+#include <iostream>
+
+void copyString(const char* source, char* destination) {
+    if (*source == '\0') {
+        *destination = '\0';
+        return;
+    }
+    *destination = *source;
+    copyString(source + 1, destination + 1);
+}
+
+int main() {
+    const int size = 100;
+    char source[size];
+    char destination[size];
+
+    std::cout << "Введите строку: ";
+    std::cin.getline(source, size);
+
+    copyString(source, destination);
+    
+    std::cout << "Скопированная строка: " << destination << std::endl;
+
+    return 0;
+}
