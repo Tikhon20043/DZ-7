@@ -1,0 +1,29 @@
+//Напишите рекурсивную функцию, которая вычисляет сумму элементов
+//динамического массива. Используйте ее в main.
+
+#include <iostream>
+
+int sumArray(int* arr, int size) {
+    if (size == 0) {
+        return 0;
+    }
+    return arr[size - 1] + sumArray(arr, size - 1);
+}
+
+int main() {
+    int size;
+    std::cout << "Введите размер массива: ";
+    std::cin >> size;
+
+    int* arr = new int[size];
+    std::cout << "Введите элементы массива:\n";
+    for (int i = 0; i < size; ++i) {
+        std::cin >> arr[i];
+    }
+
+    int total = sumArray(arr, size);
+    std::cout << "Сумма элементов массива: " << total << std::endl;
+
+    delete[] arr;
+    return 0;
+}
