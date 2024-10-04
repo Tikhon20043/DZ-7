@@ -1,0 +1,36 @@
+//Напишите рекурсивную функцию, чтобы проверить, является ли C-style
+//строка палиндромом. Используйте ее в main.
+
+
+#include <iostream>
+
+bool isPalindrome(const char* str, int start, int end) {
+    if (start >= end) {
+        return true;
+    }
+    if (str[start] != str[end]) {
+        return false;
+    }
+    return isPalindrome(str, start + 1, end - 1);
+}
+
+int main() {
+    const int size = 100;
+    char str[size];
+
+    std::cout << "Введите строку: ";
+    std::cin.getline(str, size);
+
+    int length = 0;
+    while (str[length] != '\0') {
+        length++;
+    }
+
+    if (isPalindrome(str, 0, length - 1)) {
+        std::cout << "Строка является палиндромом." << std::endl;
+    } else {
+        std::cout << "Строка не является палиндромом." << std::endl;
+    }
+
+    return 0;
+}
